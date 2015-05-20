@@ -105,7 +105,7 @@ void MainWindow::createTypeImg(){
 
 void MainWindow::on_typeText_textChanged(const QString &arg1)
 {
-    QFile file("C://Users//H123186/Documents/github/test/wahluigi/pokemon.txt");
+    QFile file("C://Users//H123186/Documents/github/test/PokeTool/pokemon.txt");
     if(file.open(QIODevice::ReadOnly))
     {
         QTextStream in(&file);

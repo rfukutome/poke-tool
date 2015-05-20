@@ -5,6 +5,7 @@
 #include <QFile>
 #include <QTextStream>
 #include <QDataStream>
+#include <QPixmap>
 
 using namespace std;
 
@@ -13,12 +14,15 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    fillList();
 }
 
 void MainWindow::fillList(){
-    QFile file("C://Users//H123186/Documents/github/test/wahluigi/pokemon.txt");
+    QFile file("C://Users//H123186/Documents/github/test/PokeTool/pokemon.txt");
     if(file.open(QIODevice::ReadOnly))
     {
+        createTypeImg();
+
         QTextStream in(&file);
         while(!in.atEnd()){
             QString line = in.readLine();
@@ -26,8 +30,6 @@ void MainWindow::fillList(){
 
             QString id = fields.takeFirst();
             QString name = fields.takeFirst();
-            QString type = fields.takeFirst();
-            QString type2 = fields.takeFirst();
             ui->pokeBox->addItem(name);
             ui->idBlock->addItem(id);
            }
@@ -45,8 +47,60 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::updateType(){
-    ui->typeText->setText("Wah");
+void MainWindow::createTypeImg(){
+    QPixmap* weakPic = new QPixmap("C://Users//H123186/Documents/github/test/PokeTool/typeimg/normal.png");
+    ui->normalLabel->setPixmap(*weakPic);
+
+    weakPic = new QPixmap("C://Users//H123186/Documents/github/test/PokeTool/typeimg/fight.png");
+    ui->fightLabel->setPixmap(*weakPic);
+
+    weakPic = new QPixmap("C://Users//H123186/Documents/github/test/PokeTool/typeimg/flying.png");
+    ui->flyingLabel->setPixmap(*weakPic);
+
+    weakPic = new QPixmap("C://Users//H123186/Documents/github/test/PokeTool/typeimg/poison.png");
+    ui->poisonLabel->setPixmap(*weakPic);
+
+    weakPic = new QPixmap("C://Users//H123186/Documents/github/test/PokeTool/typeimg/ground.png");
+    ui->groundLabel->setPixmap(*weakPic);
+
+    weakPic = new QPixmap("C://Users//H123186/Documents/github/test/PokeTool/typeimg/rock.png");
+    ui->rockLabel->setPixmap(*weakPic);
+
+    weakPic = new QPixmap("C://Users//H123186/Documents/github/test/PokeTool/typeimg/bug.png");
+    ui->bugLabel->setPixmap(*weakPic);
+
+    weakPic = new QPixmap("C://Users//H123186/Documents/github/test/PokeTool/typeimg/ghost.png");
+    ui->ghostLabel->setPixmap(*weakPic);
+
+    weakPic = new QPixmap("C://Users//H123186/Documents/github/test/PokeTool/typeimg/steel.png");
+    ui->steelLabel->setPixmap(*weakPic);
+
+    weakPic = new QPixmap("C://Users//H123186/Documents/github/test/PokeTool/typeimg/fire.png");
+    ui->fireLabel->setPixmap(*weakPic);
+
+    weakPic = new QPixmap("C://Users//H123186/Documents/github/test/PokeTool/typeimg/water.png");
+    ui->waterLabel->setPixmap(*weakPic);
+
+    weakPic = new QPixmap("C://Users//H123186/Documents/github/test/PokeTool/typeimg/grass.png");
+    ui->grassLabel->setPixmap(*weakPic);
+
+    weakPic = new QPixmap("C://Users//H123186/Documents/github/test/PokeTool/typeimg/electric.png");
+    ui->electricLabel->setPixmap(*weakPic);
+
+    weakPic = new QPixmap("C://Users//H123186/Documents/github/test/PokeTool/typeimg/psychic.png");
+    ui->psychicLabel->setPixmap(*weakPic);
+
+    weakPic = new QPixmap("C://Users//H123186/Documents/github/test/PokeTool/typeimg/ice.png");
+    ui->iceLabel->setPixmap(*weakPic);
+
+    weakPic = new QPixmap("C://Users//H123186/Documents/github/test/PokeTool/typeimg/dragon.png");
+    ui->dragonLabel->setPixmap(*weakPic);
+
+    weakPic = new QPixmap("C://Users//H123186/Documents/github/test/PokeTool/typeimg/dark.png");
+    ui->darkLabel->setPixmap(*weakPic);
+
+    weakPic = new QPixmap("C://Users//H123186/Documents/github/test/PokeTool/typeimg/fairy.png");
+    ui->fairyLabel->setPixmap(*weakPic);
 }
 
 void MainWindow::on_typeText_textChanged(const QString &arg1)

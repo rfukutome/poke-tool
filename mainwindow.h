@@ -14,17 +14,17 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
-    void fillList();
-    void findType(QString type, double *ptr);
 
-public slots:
-    void updateType();
+
 
 private slots:
     void on_typeText_textChanged(const QString &arg1);
 
 private:
     Ui::MainWindow *ui;
+    void fillList();
+    void createTypeImg();
+    void findType(QString type, double *ptr);
 };
 
 #endif // MAINWINDOW_H

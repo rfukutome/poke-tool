@@ -12,10 +12,12 @@ TARGET = wahluigi
 TEMPLATE = app
 
 SOURCES += main.cpp\
-        mainwindow.cpp \
-    Pokewrite.cpp
+        mainwindow.cpp
 
-HEADERS  += mainwindow.h \
-    Pokewrite.h
+HEADERS  += \
+    mainwindow.h
 
 FORMS    += mainwindow.ui
+
+RESOURCES += \
+    uielements.qrc

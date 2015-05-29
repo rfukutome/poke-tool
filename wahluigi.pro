@@ -13,6 +13,9 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         mainwindow.cpp
+        plugin_import.cpp
+
+LIBS += Qt5PlatformSupportd.lib windowsd.lib rpcrt4.lib
 
 HEADERS  += \
     mainwindow.h

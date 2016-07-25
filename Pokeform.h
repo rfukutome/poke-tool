@@ -1,5 +1,12 @@
 #pragma once
 
+#include <fstream>
+#include <string>
+#include <iostream>
+#include <msclr/marshal_cppstd.h>
+
+#include "PokemonListReader.h"
+
 namespace PokeTool {
 
 	using namespace System;
@@ -9,15 +16,19 @@ namespace PokeTool {
 	using namespace System::Data;
 	using namespace System::Drawing;
 
+    PokemonListReader pokemonDatabase;
+
 	/// <summary>
 	/// Summary for MyForm
 	/// </summary>
+
 	public ref class MyForm : public System::Windows::Forms::Form
 	{
 	public:
 		MyForm(void)
 		{
 			InitializeComponent();
+            populatePokemonLists();
 			//
 			//TODO: Add the constructor code here
 			//
@@ -40,7 +51,30 @@ namespace PokeTool {
     private: System::Windows::Forms::ComboBox^  pokemonNumber;
     private: System::Windows::Forms::PictureBox^  typeImageOne;
     private: System::Windows::Forms::PictureBox^  typeImageTwo;
-    private: System::Windows::Forms::Button^  button1;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     protected:
 
 	private:
@@ -48,6 +82,25 @@ namespace PokeTool {
 		/// Required designer variable.
 		/// </summary>
 		System::ComponentModel::Container ^components;
+        
+        
+        void populatePokemonLists() 
+        {
+            std::ifstream pokemon("pokemon.txt");
+            std::string number;
+            std::string name;
+            std::string type;
+            std::string type2;
+            
+            while (pokemon >> number >> name >> type >> type2)
+            {
+                pokemonDatabase.addPokemonData(number, name, type, type2);
+                System::String^ pokeName = gcnew String(name.c_str());
+                System::String^ pokeNumber = gcnew String(number.c_str());
+                pokemonName->Items->Add(pokeName);
+                pokemonNumber->Items->Add(pokeNumber);
+            }
+        };
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -62,7 +115,6 @@ namespace PokeTool {
             this->pokemonNumber = (gcnew System::Windows::Forms::ComboBox());
             this->typeImageOne = (gcnew System::Windows::Forms::PictureBox());
             this->typeImageTwo = (gcnew System::Windows::Forms::PictureBox());
-            this->button1 = (gcnew System::Windows::Forms::Button());
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->typeImageOne))->BeginInit();
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->typeImageTwo))->BeginInit();
             this->SuspendLayout();
@@ -84,7 +136,7 @@ namespace PokeTool {
             this->Typing->AutoSize = true;
             this->Typing->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
                 static_cast<System::Byte>(0)));
-            this->Typing->Location = System::Drawing::Point(282, 9);
+            this->Typing->Location = System::Drawing::Point(309, 9);
             this->Typing->Name = L"Typing";
             this->Typing->Size = System::Drawing::Size(51, 17);
             this->Typing->TabIndex = 1;
@@ -94,12 +146,10 @@ namespace PokeTool {
             // 
             this->pokemonName->AllowDrop = true;
             this->pokemonName->FormattingEnabled = true;
-            this->pokemonName->Items->AddRange(gcnew cli::array< System::Object^  >(3) { L"Cack", L"monger", L"blah" });
             this->pokemonName->Location = System::Drawing::Point(74, 37);
             this->pokemonName->Name = L"pokemonName";
             this->pokemonName->Size = System::Drawing::Size(169, 21);
             this->pokemonName->TabIndex = 2;
-            this->pokemonName->Text = L"Pokemon";
             this->pokemonName->SelectedIndexChanged += gcnew System::EventHandler(this, &MyForm::pokemonName_SelectedIndexChanged);
             this->pokemonName->TextChanged += gcnew System::EventHandler(this, &MyForm::pokemonName_TextChanged);
             // 
@@ -111,11 +161,11 @@ namespace PokeTool {
             this->pokemonNumber->Name = L"pokemonNumber";
             this->pokemonNumber->Size = System::Drawing::Size(51, 21);
             this->pokemonNumber->TabIndex = 3;
-            this->pokemonNumber->Text = L"#";
+            this->pokemonNumber->SelectedIndexChanged += gcnew System::EventHandler(this, &MyForm::pokemonNumber_SelectedIndexChanged);
             // 
             // typeImageOne
             // 
-            this->typeImageOne->Location = System::Drawing::Point(285, 37);
+            this->typeImageOne->Location = System::Drawing::Point(254, 37);
             this->typeImageOne->Name = L"typeImageOne";
             this->typeImageOne->Size = System::Drawing::Size(79, 21);
             this->typeImageOne->TabIndex = 4;
@@ -123,27 +173,18 @@ namespace PokeTool {
             // 
             // typeImageTwo
             // 
-            this->typeImageTwo->Location = System::Drawing::Point(370, 37);
+            this->typeImageTwo->Location = System::Drawing::Point(339, 37);
             this->typeImageTwo->Name = L"typeImageTwo";
             this->typeImageTwo->Size = System::Drawing::Size(79, 21);
             this->typeImageTwo->TabIndex = 5;
             this->typeImageTwo->TabStop = false;
             // 
-            // button1
-            // 
-            this->button1->Location = System::Drawing::Point(484, 34);
-            this->button1->Name = L"button1";
-            this->button1->Size = System::Drawing::Size(75, 23);
-            this->button1->TabIndex = 6;
-            this->button1->Text = L"Go";
-            this->button1->UseVisualStyleBackColor = true;
-            // 
             // MyForm
             // 
             this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
             this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-            this->ClientSize = System::Drawing::Size(1049, 510);
-            this->Controls->Add(this->button1);
+            this->BackColor = System::Drawing::SystemColors::AppWorkspace;
+            this->ClientSize = System::Drawing::Size(659, 510);
             this->Controls->Add(this->typeImageTwo);
             this->Controls->Add(this->typeImageOne);
             this->Controls->Add(this->pokemonNumber);
@@ -161,10 +202,44 @@ namespace PokeTool {
 #pragma endregion
     private: System::Void label1_Click(System::Object^  sender, System::EventArgs^  e) {
     }
-    private: System::Void pokemonName_SelectedIndexChanged(System::Object^  sender, System::EventArgs^  e) {
-    }
-private: System::Void pokemonName_TextChanged(System::Object^  sender, System::EventArgs^  e) {
+    
+    private: System::Void pokemonName_SelectedIndexChanged(System::Object^  sender, System::EventArgs^  e) {   
+        
+        PokemonData pokeData;
+        std::string pokeName = msclr::interop::marshal_as<std::string>(pokemonName->SelectedItem->ToString());
+        pokeData = pokemonDatabase.findPokemonByName(pokeName);
+        
+        //Setting the Pokemon number to the correct number
+        std::string pokeNumber = pokeData.basicAttributes[POKEMON_NUMBER];
+        int index = pokemonNumber->FindString(gcnew String(pokeNumber.c_str()));
+        pokemonNumber->SelectedIndex = index;
 
-}
+        //Setting the first type
+        std::string pokeType = pokeData.basicAttributes[POKEMON_TYPE1];
+        
+
+        //Setting second type
+        std::string pokeType2 = pokeData.basicAttributes[POKEMON_TYPE2];
+
+    }
+
+    private: System::Void pokemonNumber_SelectedIndexChanged(System::Object^  sender, System::EventArgs^  e) {
+        PokemonData pokeData;
+        std::string pokeNumber = msclr::interop::marshal_as<std::string>(pokemonNumber->SelectedItem->ToString()); 
+        pokeData = pokemonDatabase.findPokemonByNumber(pokeNumber);
+
+        //Setting the Pokemon name to the correct pokemon
+        std::string pokeName = pokeData.basicAttributes[POKEMON_NAME];
+        int index = pokemonName->FindString(gcnew String(pokeName.c_str()));
+        pokemonName->SelectedIndex = index;
+    }
+    private: System::Void pokemonName_TextChanged(System::Object^  sender, System::EventArgs^  e) {
+
+    }
+
+    private: System::Void specifyPokemon(System::Object^  sender, System::EventArgs^  e) {
+    }
 };
+
+
 }

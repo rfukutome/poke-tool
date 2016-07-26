@@ -1,7 +1,0 @@
-﻿  Pokeform.cpp
-  PokemonListReader.cpp
-  Generating Code...
-c:\users\richie\documents\poketool\poketool\pokemonlistreader.cpp(33): warning C4715: 'PokemonListReader::findPokemonByName': not all control paths return a value
-c:\users\richie\documents\poketool\poketool\pokemonlistreader.cpp(40): warning C4715: 'PokemonListReader::findPokemonByNumber': not all control paths return a value
-  .NETFramework,Version=v4.5.2.AssemblyAttributes.cpp
-LINK : fatal error LNK1561: entry point must be defined

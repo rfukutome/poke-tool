@@ -71,6 +71,25 @@ namespace PokeTool {
     private: System::Windows::Forms::PictureBox^  steelImage;
     private: System::Windows::Forms::PictureBox^  fairyImage;
     private: System::Windows::Forms::GroupBox^  groupBox1;
+    private: System::Windows::Forms::Label^  fireLabel;
+    private: System::Windows::Forms::Label^  normalLabel;
+    private: System::Windows::Forms::Label^  fairyLabel;
+    private: System::Windows::Forms::Label^  steelLabel;
+    private: System::Windows::Forms::Label^  darkLabel;
+    private: System::Windows::Forms::Label^  dragonLabel;
+    private: System::Windows::Forms::Label^  ghostLabel;
+    private: System::Windows::Forms::Label^  rockLabel;
+    private: System::Windows::Forms::Label^  bugLabel;
+    private: System::Windows::Forms::Label^  psychicLabel;
+    private: System::Windows::Forms::Label^  flyingLabel;
+    private: System::Windows::Forms::Label^  groundLabel;
+    private: System::Windows::Forms::Label^  poisonLabel;
+    private: System::Windows::Forms::Label^  fightingLabel;
+    private: System::Windows::Forms::Label^  iceLabel;
+    private: System::Windows::Forms::Label^  grassLabel;
+    private: System::Windows::Forms::Label^  electricLabel;
+    private: System::Windows::Forms::Label^  waterLabel;
+
     protected:
 
 	private:
@@ -95,10 +114,28 @@ namespace PokeTool {
                 pokemonName->Items->Add(pokeName);
                 pokemonNumber->Items->Add(pokeNumber);
             }
+            pokemonName->SelectedIndex = 0;
         };
 
-        void setPokemonWeakness(int* argWeakness) {
-
+        void setPokemonWeakness(float* argWeakness) {
+            normalLabel->Text = gcnew String((std::to_string(argWeakness[NORMAL])).c_str());
+            fireLabel->Text = gcnew String((std::to_string(argWeakness[FIRE])).c_str());
+            waterLabel->Text = gcnew String((std::to_string(argWeakness[WATER])).c_str());
+            electricLabel->Text = gcnew String((std::to_string(argWeakness[ELECTRIC])).c_str());
+            grassLabel->Text = gcnew String((std::to_string(argWeakness[GRASS])).c_str());
+            iceLabel->Text = gcnew String((std::to_string(argWeakness[ICE])).c_str());
+            fightingLabel->Text = gcnew String((std::to_string(argWeakness[FIGHTING])).c_str());
+            poisonLabel->Text = gcnew String((std::to_string(argWeakness[POISON])).c_str());
+            groundLabel->Text = gcnew String((std::to_string(argWeakness[GROUND])).c_str());
+            flyingLabel->Text = gcnew String((std::to_string(argWeakness[FLYING])).c_str());
+            psychicLabel->Text = gcnew String((std::to_string(argWeakness[PSYCHIC])).c_str());
+            bugLabel->Text = gcnew String((std::to_string(argWeakness[BUG])).c_str());
+            rockLabel->Text = gcnew String((std::to_string(argWeakness[ROCK])).c_str());
+            ghostLabel->Text = gcnew String((std::to_string(argWeakness[GHOST])).c_str());
+            dragonLabel->Text = gcnew String((std::to_string(argWeakness[DRAGON])).c_str());
+            darkLabel->Text = gcnew String((std::to_string(argWeakness[DARK])).c_str());
+            steelLabel->Text = gcnew String((std::to_string(argWeakness[STEEL])).c_str());
+            fairyLabel->Text = gcnew String((std::to_string(argWeakness[FAIRY])).c_str());
         }
 
 #pragma region Windows Form Designer generated code
@@ -134,6 +171,24 @@ namespace PokeTool {
             this->steelImage = (gcnew System::Windows::Forms::PictureBox());
             this->fairyImage = (gcnew System::Windows::Forms::PictureBox());
             this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
+            this->fairyLabel = (gcnew System::Windows::Forms::Label());
+            this->steelLabel = (gcnew System::Windows::Forms::Label());
+            this->darkLabel = (gcnew System::Windows::Forms::Label());
+            this->dragonLabel = (gcnew System::Windows::Forms::Label());
+            this->ghostLabel = (gcnew System::Windows::Forms::Label());
+            this->rockLabel = (gcnew System::Windows::Forms::Label());
+            this->bugLabel = (gcnew System::Windows::Forms::Label());
+            this->psychicLabel = (gcnew System::Windows::Forms::Label());
+            this->flyingLabel = (gcnew System::Windows::Forms::Label());
+            this->groundLabel = (gcnew System::Windows::Forms::Label());
+            this->poisonLabel = (gcnew System::Windows::Forms::Label());
+            this->fightingLabel = (gcnew System::Windows::Forms::Label());
+            this->iceLabel = (gcnew System::Windows::Forms::Label());
+            this->grassLabel = (gcnew System::Windows::Forms::Label());
+            this->electricLabel = (gcnew System::Windows::Forms::Label());
+            this->waterLabel = (gcnew System::Windows::Forms::Label());
+            this->normalLabel = (gcnew System::Windows::Forms::Label());
+            this->fireLabel = (gcnew System::Windows::Forms::Label());
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->normalImage))->BeginInit();
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->typeImage1))->BeginInit();
             (cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->typeImage2))->BeginInit();
@@ -362,7 +417,7 @@ namespace PokeTool {
             // 
             this->rockImage->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"rockImage.BackgroundImage")));
             this->rockImage->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-            this->rockImage->Location = System::Drawing::Point(37, 136);
+            this->rockImage->Location = System::Drawing::Point(37, 130);
             this->rockImage->Margin = System::Windows::Forms::Padding(3, 4, 3, 4);
             this->rockImage->Name = L"rockImage";
             this->rockImage->Size = System::Drawing::Size(60, 21);
@@ -373,7 +428,7 @@ namespace PokeTool {
             // 
             this->ghostImage->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"ghostImage.BackgroundImage")));
             this->ghostImage->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-            this->ghostImage->Location = System::Drawing::Point(103, 136);
+            this->ghostImage->Location = System::Drawing::Point(103, 130);
             this->ghostImage->Margin = System::Windows::Forms::Padding(3, 4, 3, 4);
             this->ghostImage->Name = L"ghostImage";
             this->ghostImage->Size = System::Drawing::Size(60, 21);
@@ -384,7 +439,7 @@ namespace PokeTool {
             // 
             this->dragonImage->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"dragonImage.BackgroundImage")));
             this->dragonImage->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-            this->dragonImage->Location = System::Drawing::Point(169, 136);
+            this->dragonImage->Location = System::Drawing::Point(169, 130);
             this->dragonImage->Margin = System::Windows::Forms::Padding(3, 4, 3, 4);
             this->dragonImage->Name = L"dragonImage";
             this->dragonImage->Size = System::Drawing::Size(60, 21);
@@ -395,7 +450,7 @@ namespace PokeTool {
             // 
             this->darkImage->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"darkImage.BackgroundImage")));
             this->darkImage->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-            this->darkImage->Location = System::Drawing::Point(235, 136);
+            this->darkImage->Location = System::Drawing::Point(235, 130);
             this->darkImage->Margin = System::Windows::Forms::Padding(3, 4, 3, 4);
             this->darkImage->Name = L"darkImage";
             this->darkImage->Size = System::Drawing::Size(60, 21);
@@ -406,7 +461,7 @@ namespace PokeTool {
             // 
             this->steelImage->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"steelImage.BackgroundImage")));
             this->steelImage->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-            this->steelImage->Location = System::Drawing::Point(301, 136);
+            this->steelImage->Location = System::Drawing::Point(301, 130);
             this->steelImage->Margin = System::Windows::Forms::Padding(3, 4, 3, 4);
             this->steelImage->Name = L"steelImage";
             this->steelImage->Size = System::Drawing::Size(60, 21);
@@ -417,7 +472,7 @@ namespace PokeTool {
             // 
             this->fairyImage->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"fairyImage.BackgroundImage")));
             this->fairyImage->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-            this->fairyImage->Location = System::Drawing::Point(367, 136);
+            this->fairyImage->Location = System::Drawing::Point(367, 130);
             this->fairyImage->Margin = System::Windows::Forms::Padding(3, 4, 3, 4);
             this->fairyImage->Name = L"fairyImage";
             this->fairyImage->Size = System::Drawing::Size(60, 21);
@@ -426,6 +481,24 @@ namespace PokeTool {
             // 
             // groupBox1
             // 
+            this->groupBox1->Controls->Add(this->fairyLabel);
+            this->groupBox1->Controls->Add(this->steelLabel);
+            this->groupBox1->Controls->Add(this->darkLabel);
+            this->groupBox1->Controls->Add(this->dragonLabel);
+            this->groupBox1->Controls->Add(this->ghostLabel);
+            this->groupBox1->Controls->Add(this->rockLabel);
+            this->groupBox1->Controls->Add(this->bugLabel);
+            this->groupBox1->Controls->Add(this->psychicLabel);
+            this->groupBox1->Controls->Add(this->flyingLabel);
+            this->groupBox1->Controls->Add(this->groundLabel);
+            this->groupBox1->Controls->Add(this->poisonLabel);
+            this->groupBox1->Controls->Add(this->fightingLabel);
+            this->groupBox1->Controls->Add(this->iceLabel);
+            this->groupBox1->Controls->Add(this->grassLabel);
+            this->groupBox1->Controls->Add(this->electricLabel);
+            this->groupBox1->Controls->Add(this->waterLabel);
+            this->groupBox1->Controls->Add(this->normalLabel);
+            this->groupBox1->Controls->Add(this->fireLabel);
             this->groupBox1->Controls->Add(this->bugImage);
             this->groupBox1->Controls->Add(this->fairyImage);
             this->groupBox1->Controls->Add(this->normalImage);
@@ -454,6 +527,206 @@ namespace PokeTool {
             this->groupBox1->TabIndex = 24;
             this->groupBox1->TabStop = false;
             this->groupBox1->Text = L"Type Effectiveness";
+            // 
+            // fairyLabel
+            // 
+            this->fairyLabel->Font = (gcnew System::Drawing::Font(L"Segoe UI", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+                static_cast<System::Byte>(0)));
+            this->fairyLabel->Location = System::Drawing::Point(378, 155);
+            this->fairyLabel->Name = L"fairyLabel";
+            this->fairyLabel->Size = System::Drawing::Size(40, 21);
+            this->fairyLabel->TabIndex = 41;
+            this->fairyLabel->Text = L"1";
+            this->fairyLabel->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+            // 
+            // steelLabel
+            // 
+            this->steelLabel->Font = (gcnew System::Drawing::Font(L"Segoe UI", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+                static_cast<System::Byte>(0)));
+            this->steelLabel->Location = System::Drawing::Point(310, 155);
+            this->steelLabel->Name = L"steelLabel";
+            this->steelLabel->Size = System::Drawing::Size(40, 21);
+            this->steelLabel->TabIndex = 40;
+            this->steelLabel->Text = L"1";
+            this->steelLabel->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+            // 
+            // darkLabel
+            // 
+            this->darkLabel->Font = (gcnew System::Drawing::Font(L"Segoe UI", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+                static_cast<System::Byte>(0)));
+            this->darkLabel->Location = System::Drawing::Point(246, 155);
+            this->darkLabel->Name = L"darkLabel";
+            this->darkLabel->Size = System::Drawing::Size(40, 21);
+            this->darkLabel->TabIndex = 39;
+            this->darkLabel->Text = L"1";
+            this->darkLabel->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+            // 
+            // dragonLabel
+            // 
+            this->dragonLabel->Font = (gcnew System::Drawing::Font(L"Segoe UI", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+                static_cast<System::Byte>(0)));
+            this->dragonLabel->Location = System::Drawing::Point(180, 155);
+            this->dragonLabel->Name = L"dragonLabel";
+            this->dragonLabel->Size = System::Drawing::Size(40, 21);
+            this->dragonLabel->TabIndex = 38;
+            this->dragonLabel->Text = L"1";
+            this->dragonLabel->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+            // 
+            // ghostLabel
+            // 
+            this->ghostLabel->Font = (gcnew System::Drawing::Font(L"Segoe UI", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+                static_cast<System::Byte>(0)));
+            this->ghostLabel->Location = System::Drawing::Point(114, 155);
+            this->ghostLabel->Name = L"ghostLabel";
+            this->ghostLabel->Size = System::Drawing::Size(40, 21);
+            this->ghostLabel->TabIndex = 37;
+            this->ghostLabel->Text = L"1";
+            this->ghostLabel->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+            // 
+            // rockLabel
+            // 
+            this->rockLabel->Font = (gcnew System::Drawing::Font(L"Segoe UI", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+                static_cast<System::Byte>(0)));
+            this->rockLabel->Location = System::Drawing::Point(48, 155);
+            this->rockLabel->Name = L"rockLabel";
+            this->rockLabel->Size = System::Drawing::Size(40, 21);
+            this->rockLabel->TabIndex = 36;
+            this->rockLabel->Text = L"1";
+            this->rockLabel->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+            // 
+            // bugLabel
+            // 
+            this->bugLabel->Font = (gcnew System::Drawing::Font(L"Segoe UI", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+                static_cast<System::Byte>(0)));
+            this->bugLabel->Location = System::Drawing::Point(378, 105);
+            this->bugLabel->Name = L"bugLabel";
+            this->bugLabel->Size = System::Drawing::Size(40, 21);
+            this->bugLabel->TabIndex = 35;
+            this->bugLabel->Text = L"1";
+            this->bugLabel->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+            // 
+            // psychicLabel
+            // 
+            this->psychicLabel->Font = (gcnew System::Drawing::Font(L"Segoe UI", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+                static_cast<System::Byte>(0)));
+            this->psychicLabel->Location = System::Drawing::Point(310, 105);
+            this->psychicLabel->Name = L"psychicLabel";
+            this->psychicLabel->Size = System::Drawing::Size(40, 21);
+            this->psychicLabel->TabIndex = 34;
+            this->psychicLabel->Text = L"1";
+            this->psychicLabel->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+            // 
+            // flyingLabel
+            // 
+            this->flyingLabel->Font = (gcnew System::Drawing::Font(L"Segoe UI", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+                static_cast<System::Byte>(0)));
+            this->flyingLabel->Location = System::Drawing::Point(246, 105);
+            this->flyingLabel->Name = L"flyingLabel";
+            this->flyingLabel->Size = System::Drawing::Size(40, 21);
+            this->flyingLabel->TabIndex = 33;
+            this->flyingLabel->Text = L"1";
+            this->flyingLabel->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+            // 
+            // groundLabel
+            // 
+            this->groundLabel->Font = (gcnew System::Drawing::Font(L"Segoe UI", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+                static_cast<System::Byte>(0)));
+            this->groundLabel->Location = System::Drawing::Point(180, 105);
+            this->groundLabel->Name = L"groundLabel";
+            this->groundLabel->Size = System::Drawing::Size(40, 21);
+            this->groundLabel->TabIndex = 32;
+            this->groundLabel->Text = L"1";
+            this->groundLabel->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+            // 
+            // poisonLabel
+            // 
+            this->poisonLabel->Font = (gcnew System::Drawing::Font(L"Segoe UI", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+                static_cast<System::Byte>(0)));
+            this->poisonLabel->Location = System::Drawing::Point(114, 105);
+            this->poisonLabel->Name = L"poisonLabel";
+            this->poisonLabel->Size = System::Drawing::Size(40, 21);
+            this->poisonLabel->TabIndex = 31;
+            this->poisonLabel->Text = L"1";
+            this->poisonLabel->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+            // 
+            // fightingLabel
+            // 
+            this->fightingLabel->Font = (gcnew System::Drawing::Font(L"Segoe UI", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+                static_cast<System::Byte>(0)));
+            this->fightingLabel->Location = System::Drawing::Point(48, 105);
+            this->fightingLabel->Name = L"fightingLabel";
+            this->fightingLabel->Size = System::Drawing::Size(40, 21);
+            this->fightingLabel->TabIndex = 30;
+            this->fightingLabel->Text = L"1";
+            this->fightingLabel->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+            // 
+            // iceLabel
+            // 
+            this->iceLabel->Font = (gcnew System::Drawing::Font(L"Segoe UI", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+                static_cast<System::Byte>(0)));
+            this->iceLabel->Location = System::Drawing::Point(378, 55);
+            this->iceLabel->Name = L"iceLabel";
+            this->iceLabel->Size = System::Drawing::Size(40, 21);
+            this->iceLabel->TabIndex = 29;
+            this->iceLabel->Text = L"1";
+            this->iceLabel->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+            // 
+            // grassLabel
+            // 
+            this->grassLabel->Font = (gcnew System::Drawing::Font(L"Segoe UI", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+                static_cast<System::Byte>(0)));
+            this->grassLabel->Location = System::Drawing::Point(312, 55);
+            this->grassLabel->MaximumSize = System::Drawing::Size(40, 21);
+            this->grassLabel->Name = L"grassLabel";
+            this->grassLabel->Size = System::Drawing::Size(40, 21);
+            this->grassLabel->TabIndex = 28;
+            this->grassLabel->Text = L"1";
+            this->grassLabel->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+            // 
+            // electricLabel
+            // 
+            this->electricLabel->Font = (gcnew System::Drawing::Font(L"Segoe UI", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+                static_cast<System::Byte>(0)));
+            this->electricLabel->Location = System::Drawing::Point(246, 55);
+            this->electricLabel->MaximumSize = System::Drawing::Size(40, 21);
+            this->electricLabel->Name = L"electricLabel";
+            this->electricLabel->Size = System::Drawing::Size(40, 21);
+            this->electricLabel->TabIndex = 27;
+            this->electricLabel->Text = L"1";
+            this->electricLabel->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+            // 
+            // waterLabel
+            // 
+            this->waterLabel->Font = (gcnew System::Drawing::Font(L"Segoe UI", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+                static_cast<System::Byte>(0)));
+            this->waterLabel->Location = System::Drawing::Point(180, 55);
+            this->waterLabel->Name = L"waterLabel";
+            this->waterLabel->Size = System::Drawing::Size(40, 21);
+            this->waterLabel->TabIndex = 26;
+            this->waterLabel->Text = L"1";
+            this->waterLabel->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+            // 
+            // normalLabel
+            // 
+            this->normalLabel->Font = (gcnew System::Drawing::Font(L"Segoe UI", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+                static_cast<System::Byte>(0)));
+            this->normalLabel->Location = System::Drawing::Point(48, 55);
+            this->normalLabel->Name = L"normalLabel";
+            this->normalLabel->Size = System::Drawing::Size(40, 21);
+            this->normalLabel->TabIndex = 25;
+            this->normalLabel->Text = L"1";
+            this->normalLabel->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+            // 
+            // fireLabel
+            // 
+            this->fireLabel->Font = (gcnew System::Drawing::Font(L"Segoe UI", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+                static_cast<System::Byte>(0)));
+            this->fireLabel->Location = System::Drawing::Point(114, 55);
+            this->fireLabel->Name = L"fireLabel";
+            this->fireLabel->Size = System::Drawing::Size(40, 21);
+            this->fireLabel->TabIndex = 24;
+            this->fireLabel->Text = L"1";
+            this->fireLabel->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
             // 
             // MyForm
             // 
@@ -505,7 +778,19 @@ namespace PokeTool {
         std::string pokeName = pokeData.basicAttributes[POKEMON_NAME];
         int index = pokemonName->FindString(gcnew String(pokeName.c_str()));
         pokemonName->SelectedIndex = index;
+
+        //Setting the first type
+        std::string pokeType = pokeData.basicAttributes[POKEMON_TYPE1];
+
+        //Setting second type
+        std::string pokeType2 = pokeData.basicAttributes[POKEMON_TYPE2];
+
+        //Setting weaknesses
+        float weakness[18];
+        pokemonDatabase.getWeakness(weakness, pokeType, pokeType2);
+        setPokemonWeakness(weakness);
     }
+
     private: System::Void pokemonName_SelectedIndexChanged(System::Object^  sender, System::EventArgs^  e) {
         PokemonData pokeData;
         std::string pokeName = msclr::interop::marshal_as<std::string>(pokemonName->SelectedItem->ToString());
@@ -523,7 +808,7 @@ namespace PokeTool {
         std::string pokeType2 = pokeData.basicAttributes[POKEMON_TYPE2];
 
         //Setting weaknesses
-        int weakness[18];
+        float weakness[18];
         pokemonDatabase.getWeakness(weakness, pokeType, pokeType2);
         setPokemonWeakness(weakness);
     }

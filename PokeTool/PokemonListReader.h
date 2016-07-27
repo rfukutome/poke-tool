@@ -20,24 +20,24 @@ enum Attributes {
 };
 
 enum Typing {
-    NORMAL, //0
-    FIRE,
-    WATER,
-    ELECTRIC,
-    GRASS,
-    ICE,
-    FIGHTING,
-    POISON,
-    GROUND,
-    FLYING,
-    PSYCHIC,
-    BUG,
-    ROCK,
-    GHOST,
-    DRAGON,
-    DARK,
-    STEEL,
-    FAIRY  //17
+    NORMAL,   //0
+    FIRE,     //1
+    WATER,    //2
+    ELECTRIC, //3
+    GRASS,    //4
+    ICE,      //5
+    FIGHTING, //6
+    POISON,   //7
+    GROUND,   //8
+    FLYING,   //9
+    PSYCHIC,  //10
+    BUG,      //11
+    ROCK,     //12
+    GHOST,    //13
+    DRAGON,   //14
+    DARK,     //15
+    STEEL,    //16
+    FAIRY     //17
 };
 
 class PokemonListReader
@@ -53,7 +53,7 @@ public:
     PokemonListReader();
     PokemonData findPokemonByName(std::string argPokemonName);
     PokemonData findPokemonByNumber(std::string argPokemonNumber);
-    void getWeakness(int* pokeWeakness, std::string pokeType, std::string pokeType2);
+    void getWeakness(float* pokeWeakness, std::string pokeType, std::string pokeType2);
     void addPokemonData(std::string argNumber, std::string argName, std::string argType, std::string argType2);
 };
 

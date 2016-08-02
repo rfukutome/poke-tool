@@ -28,9 +28,7 @@ namespace PokeTool {
 		{
 			InitializeComponent();
             populatePokemonLists();
-			//
-			//TODO: Add the constructor code here
-			//
+
 		}
 
 	protected:
@@ -276,19 +274,21 @@ namespace PokeTool {
             // 
             // typeImage1
             // 
-            this->typeImage1->Location = System::Drawing::Point(311, 38);
+            this->typeImage1->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+            this->typeImage1->Location = System::Drawing::Point(298, 36);
             this->typeImage1->Margin = System::Windows::Forms::Padding(3, 4, 3, 4);
             this->typeImage1->Name = L"typeImage1";
-            this->typeImage1->Size = System::Drawing::Size(75, 27);
+            this->typeImage1->Size = System::Drawing::Size(88, 29);
             this->typeImage1->TabIndex = 5;
             this->typeImage1->TabStop = false;
             // 
             // typeImage2
             // 
-            this->typeImage2->Location = System::Drawing::Point(392, 38);
+            this->typeImage2->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+            this->typeImage2->Location = System::Drawing::Point(392, 36);
             this->typeImage2->Margin = System::Windows::Forms::Padding(3, 4, 3, 4);
             this->typeImage2->Name = L"typeImage2";
-            this->typeImage2->Size = System::Drawing::Size(75, 27);
+            this->typeImage2->Size = System::Drawing::Size(88, 29);
             this->typeImage2->TabIndex = 6;
             this->typeImage2->TabStop = false;
             // 
@@ -776,15 +776,30 @@ namespace PokeTool {
 
         //Setting the Pokemon name to the correct pokemon
         std::string pokeName = pokeData.basicAttributes[POKEMON_NAME];
+        
         int index = pokemonName->FindString(gcnew String(pokeName.c_str()));
         pokemonName->SelectedIndex = index;
 
         //Setting the first type
         std::string pokeType = pokeData.basicAttributes[POKEMON_TYPE1];
+        std::string imageString = "typeimg\\" + pokeType + ".png";
+        String^ imageString1 = gcnew String(imageString.c_str());
+
+        Image^ typeImg1 = Image::FromFile(imageString1);
+        typeImage1->BackgroundImage = typeImg1;
 
         //Setting second type
         std::string pokeType2 = pokeData.basicAttributes[POKEMON_TYPE2];
-
+        if (pokeType2 != "None") {
+            imageString = "typeimg\\" + pokeType2 + ".png";
+            imageString1 = gcnew String(imageString.c_str());
+            typeImg1 = Image::FromFile(imageString1);
+            typeImage2->BackgroundImage = typeImg1;
+        }
+        else {
+            typeImage2->BackgroundImage = typeImage2->Image;
+        }
+        
         //Setting weaknesses
         float weakness[18];
         pokemonDatabase.getWeakness(weakness, pokeType, pokeType2);
